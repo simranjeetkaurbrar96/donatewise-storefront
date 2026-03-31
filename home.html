@@ -126,5 +126,25 @@
   </section>
 
   <script src="script.js"></script>
+  <script src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"></script>
+<script>
+  const msalConfig = {
+    auth: {
+      clientId: "50272edd-0fa9-4782-9248-d074e1acdee9",
+      authority: "https://login.microsoftonline.com/common",
+      redirectUri: "https://niyamaredia.github.io/donatewise-storefront/"
+    },
+    cache: {
+      cacheLocation: "sessionStorage"
+    }
+  };
+
+  const msalInstance = new msal.PublicClientApplication(msalConfig);
+  const accounts = msalInstance.getAllAccounts();
+
+  if (!accounts || accounts.length === 0) {
+    window.location.href = "index.html";
+  }
+</script>
 </body>
 </html>
